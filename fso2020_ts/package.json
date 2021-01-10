@@ -1,0 +1,23 @@
+{
+  "name": "fso2020_ts",
+  "version": "1.0.0",
+  "description": "FSO2020 Part 9",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node": "ts-node"
+  },
+  "keywords": [
+    "typescript",
+    "npm"
+  ],
+  "author": "LastHouse",
+  "license": "ISC",
+  "compilerOptions": {
+    "noImplicitAny": true
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
