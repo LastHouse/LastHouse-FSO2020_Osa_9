@@ -1,5 +1,16 @@
-const weeklyTraining = [3, 0, 2, 4.5, 0, 3, 1];
-const target = 2;
+let weeklyTraining: number[] = [];
+
+for (let i = 3; i < process.argv.length; i++) {
+  weeklyTraining.push(parseFloat(process.argv[i]));
+}
+
+//console.log(weeklyTraining);
+
+process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`);
+});
+
+const target: number = Number(process.argv[2]);
 
 interface TrainingData {
   periodLength: number;
@@ -17,8 +28,8 @@ const dayCount = () => {
 };
 
 const averageCount = () => {
-  let trainingHours = weeklyTraining.reduce(function (acc, val) {
-    return acc + val;
+  let trainingHours = weeklyTraining.reduce(function (a, b) {
+    return a + b;
   }, 0);
   let result = trainingHours / weeklyTraining.length;
   return result;
