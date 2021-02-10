@@ -28,10 +28,8 @@ app.get('/bmi', (req, res) => {
       bmi: String(result),
     };
     res.send(answer);
-    //console.log(answer);
   } else {
     res.send({ error: 'malformatted parameters' });
-    //console.log({ error: 'malformatted parameters' });
   }
 });
 
@@ -40,18 +38,16 @@ app.get('/exercises', (_reg, res) => {
 });
 
 app.post('/exercises', jsonParser, (reg, res) => {
-  //console.log(reg.body.daily_exercises.length);
   const weeklyTraining = reg.body.daily_exercises;
   const target = reg.body.target;
 
-  if (weeklyTraining.length > 1 && target) {
+  if (weeklyTraining.some(isNaN) || isNaN(Number(target))) {
+    res.send({ error: 'malformatted parameters' });
+  } else if (weeklyTraining.length < 1 || !target) {
+    res.send({ error: 'parameters missing' });
+  } else {
+    console.log(weeklyTraining);
     const result = calculateExercises(weeklyTraining, target);
     res.send(result);
-    //console.log(result);
-  } else {
-    res.send({ error: 'parameters missing' });
-    //console.log({ error: 'parameters missing' });
   }
-
-  // TÄSTÄ PUUTTUU !ISNAN VALIDOINTI!!!
 });
